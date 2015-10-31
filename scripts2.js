@@ -17,7 +17,9 @@ var margin = {top: 20, right: 400, bottom: 0, left: 20},
 var start_year = 1980,
 	end_year = 2015;
 
-var c = d3.scale.category20c();
+//var c = d3.scale.category20c();
+//var c = d3.scale.category10();
+var c = d3.scale.ordinal().range(colorbrewer.Dark2[8]);
 
 var x = d3.scale.linear()
 	.range([0, width]);
@@ -34,9 +36,6 @@ var svg = d3.select("body").append("svg")
 	.attr("height", height + margin.top + margin.bottom)
 	.append("g")
 	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-// var dataset = [[ [2002, 8], [2003, 1], [2004, 1], [2005, 1], [2006, 3], [2007, 3], [2009, 3], [2013, 3]], [ [2004, 5], [2005, 1], [2006, 2], [2010, 20], [2011, 3] ] ,[ [2001, 5], [2005, 15], [2006, 2], [2010, 20], [2012, 25] ]];
-// var dataset = [ [2001, 5], [2005, 15], [2006, 2], [2010, 20], [2012, 25] ];
 
 d3.json("tags.json", function(error, data) {
   if (data === undefined)
